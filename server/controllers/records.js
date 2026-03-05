@@ -47,6 +47,42 @@ export const createNewYear = async (req, res) => {
   }
 }
 
+export const deleteYear = async (req, res) => {
+  try {
+    const { yearId } = req.params;
+
+    // Document ko find karke delete karna
+    const deletedYear = await YearlyFinance.findByIdAndDelete(yearId);
+
+    // Agar ID galat ho ya document na mile
+    if (!deletedYear) {
+      return res.status(404).json({
+        success: false,
+        message: "Year not found with this ID"
+      });
+    }
+
+    // Success Response
+    res.status(200).json({
+      success: true,
+      message: "Year deleted successfully",
+      deletedData: deletedYear
+    });
+
+  } catch (error) {
+    // CastError handle karna agar ID ka format ghalat ho
+    if (error.kind === 'ObjectId') {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
+    
+    res.status(500).json({ 
+      success: false, 
+      message: "Server Error", 
+      error: error.message 
+    });
+  }
+}
+
 export const createNewMonth = async (req, res) => {
   try {
     const { yearId, monthName } = req.body;
@@ -102,6 +138,50 @@ export const createNewMonth = async (req, res) => {
       success: false,
       message: "Server Error",
       error: error.message
+    });
+  }
+}
+
+export const deleteMonth = async (req, res) => {
+  try {
+    const { yearId, monthId } = req.params;
+
+    // 1. Year document find karein
+    const yearDoc = await YearlyFinance.findById(yearId);
+
+    if (!yearDoc) {
+      return res.status(404).json({ message: "Year not found" });
+    }
+
+    // 2. Wo specific month find karein jo delete hone wala hai
+    const monthToDelete = yearDoc.months.id(monthId);
+
+    if (!monthToDelete) {
+      return res.status(404).json({ message: "Month not found" });
+    }
+
+    // 3. Annual totals update karein (Minus the income/expense of that month)
+    // Ensure karein ke values numbers hon
+    yearDoc.totalAnnualIncome -= (Number(monthToDelete.totalIncome) || 0);
+    yearDoc.totalAnnualExpense -= (Number(monthToDelete.totalExpense) || 0);
+
+    // 4. FIX: .pull() use karein sub-document array se nikalne ke liye
+    yearDoc.months.pull(monthId);
+
+    // 5. Save the document
+    await yearDoc.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Month deleted and annual totals updated successfully",
+      updatedYear: yearDoc
+    });
+
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      message: "Server Error", 
+      error: error.message 
     });
   }
 }

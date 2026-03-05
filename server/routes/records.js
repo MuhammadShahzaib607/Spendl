@@ -8,12 +8,16 @@ import {
     getAllYears,
     getSingleYearDetails,
     getAllTransactionOfSpecMonth,
+    deleteYear,
+    deleteMonth,
 } from "../controllers/records.js"
 
 const router = express.Router()
 
-router.post('/year', createNewYear);
+router.post('/year', createNewYear);    
+router.delete('/year/:yearId', deleteYear);
 router.post('/month', createNewMonth);
+router.delete('/month/:yearId/:monthId', deleteMonth);
 router.post('/transaction', createNewTransaction);
 router.put('/transaction/:transactionId', editTransaction);
 router.delete('/transaction/:transactionId', deleteTransaction);
