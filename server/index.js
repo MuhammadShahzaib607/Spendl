@@ -1,6 +1,7 @@
 import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import cors from "cors"
 import recordRoutes from "./routes/records.js"
 
 dotenv.config()
@@ -8,6 +9,7 @@ const app = express()
 
 app.use(express.json())
 app.use("/api/records", recordRoutes)
+app.use(cors())
 
 const connectDB = ()=> {
 try {
