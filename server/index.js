@@ -7,9 +7,9 @@ import recordRoutes from "./routes/records.js"
 dotenv.config()
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use("/api/records", recordRoutes)
-app.use(cors())
 
 const connectDB = ()=> {
 try {
