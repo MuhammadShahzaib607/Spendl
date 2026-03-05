@@ -5,7 +5,7 @@ const TransactionSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   type: { 
     type: String, 
-    enum: ['Income', 'Expense'], 
+    enum: ['income', 'expense'], 
     required: true 
   },
   date: { type: Date, default: Date.now },
