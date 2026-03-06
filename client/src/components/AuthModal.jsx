@@ -77,6 +77,7 @@ window.location.reload()
                 <input 
                   type="email"
                   required
+                  autoComplete='off'
                   placeholder="name@company.com"
                   className="w-full bg-gray-50 border border-gray-100 text-sm py-3.5 pl-11 pr-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white transition-all placeholder:text-gray-300 font-medium"
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
