@@ -194,7 +194,7 @@ const YearDetails = () => {
                     {/* DELETE BUTTON */}
                     <button 
                       onClick={(e) => { e.preventDefault(); setDeleteId(month._id); }}
-                      className="absolute top-4 right-4 z-20 p-2 bg-white/90 backdrop-blur-sm text-rose-500 rounded-xl opacity-0 group-hover:opacity-100 transition-all hover:bg-rose-500 hover:text-white border border-gray-100 cursor-pointer shadow-sm"
+                      className="absolute top-4 right-4 z-20 p-2 bg-white/90 backdrop-blur-sm text-rose-500 rounded-xl group-hover:opacity-100 transition-all hover:bg-rose-500 hover:text-white border border-gray-100 cursor-pointer shadow-sm"
                     >
                       <Trash2 size={14} />
                     </button>

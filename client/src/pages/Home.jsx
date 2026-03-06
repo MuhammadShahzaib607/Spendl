@@ -173,21 +173,21 @@ const Home = () => {
                       {/* Delete Trigger Button */}
                       <button 
                         onClick={() => setDeleteId(item._id)}
-                        className="absolute top-4 right-4 z-30 p-2 bg-white/80 backdrop-blur-md text-rose-500 rounded-xl opacity-0 group-hover:opacity-100 transition-all hover:bg-rose-500 hover:text-white border border-gray-100 cursor-pointer"
+                        className="absolute top-4 right-4 z-30 p-2 bg-white/80 backdrop-blur-md text-rose-500 rounded-xl group-hover:opacity-100 transition-all hover:bg-rose-500 hover:text-white border border-gray-100 cursor-pointer"
                       >
                         <Trash2 size={14} />
                       </button>
 
                       <Link to={`/year/${item._id}`}>
                         <motion.div 
-                          whileHover={{ y: -5 }}
+                          // whileHover={{ y: -5 }}
                           className="bg-white border border-gray-100 p-6 rounded-[2.5rem] h-full transition-all hover:shadow-xl hover:shadow-blue-100/50"
                         >
                           <div className="flex justify-between items-start mb-6">
                             <div className="bg-blue-50 p-3 rounded-2xl text-[#002366] group-hover:bg-[#002366] group-hover:text-white transition-colors">
                               <Calendar size={18} />
                             </div>
-                            <p className="text-[9px] font-bold text-gray-400 italic mt-1">{formatDate(item.createdAt)}</p>
+                            <p className="text-[9px] font-bold text-gray-400 italic mt-0 mr-8">{formatDate(item.createdAt)}</p>
                           </div>
 
                           <h3 className="text-3xl font-black text-[#002366] mb-4">{item.year}</h3>

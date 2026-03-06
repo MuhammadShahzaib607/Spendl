@@ -204,7 +204,7 @@ const MonthTransactions = () => {
                         </div>
 
                         {/* EDIT & DELETE ACTIONS */}
-                        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex gap-1 group-hover:opacity-100 transition-opacity">
                           <button 
                             disabled={actionLoading}
                             onClick={() => { setSelectedTx(item); setIsEditModalOpen(true); }}
