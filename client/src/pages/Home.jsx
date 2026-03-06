@@ -114,7 +114,7 @@ const Home = () => {
           <div className="max-w-7xl mx-auto text-center relative z-10">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
               <span className="bg-blue-100 text-[#002366] px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase">
-                Finance Manager v1.0
+               Spendl | Finance Manager v1.0
               </span>
               <h1 className="mt-6 text-4xl md:text-5xl font-black text-[#002366] tracking-tight">
                 Track Your Wealth <br /> <span className="text-blue-600">Year by Year.</span>
