@@ -3,14 +3,17 @@ import './App.css'
 import Home from './pages/Home.jsx'
 import YearDetails from './pages/YearDetails.jsx'
 import MonthTransactions from './pages/MonthTransactions.jsx'
+import AuthRoute from './routes/AuthRoute.jsx'
 
 function App() {
   return (
     <>
     <Routes>
-<Route index element={<Home />} />
+<Route element={<AuthRoute />}>
+  <Route index element={<Home />} />
 <Route path='/year/:id' element={<YearDetails />} />
 <Route path='/month/:yearId/:monthId' element={<MonthTransactions />} />
+</Route>
     </Routes>
     </>
   )
