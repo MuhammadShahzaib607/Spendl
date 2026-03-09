@@ -162,8 +162,8 @@ export const deleteMonth = async (req, res) => {
 
     // 3. Annual totals update karein (Minus the income/expense of that month)
     // Ensure karein ke values numbers hon
-    yearDoc.totalAnnualIncome -= (Number(monthToDelete.totalIncome) || 0);
-    yearDoc.totalAnnualExpense -= (Number(monthToDelete.totalExpense) || 0);
+    yearDoc.annualIncome -= (Number(monthToDelete.totalIncome) || 0);
+    yearDoc.annualExpense -= (Number(monthToDelete.totalExpense) || 0);
 
     // 4. FIX: .pull() use karein sub-document array se nikalne ke liye
     yearDoc.months.pull(monthId);
