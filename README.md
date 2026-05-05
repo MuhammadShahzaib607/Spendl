@@ -27,7 +27,7 @@ The frontend and backend are both located in this single repository. Follow thes
 1. **Clone the repository**
 
 ```bash
-https://github.com/MuhammadShahzaib607/Spendl.git
+git clone https://github.com/MuhammadShahzaib607/Spendl.git
 ```
 
 2. **Install dependencies**
